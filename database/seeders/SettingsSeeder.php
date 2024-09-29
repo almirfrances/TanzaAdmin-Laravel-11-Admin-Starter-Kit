@@ -33,10 +33,10 @@ class SettingsSeeder extends Seeder
             ['key' => 'email_method', 'value' => 'smtp'],
             ['key' => 'smtp_host', 'value' => 'panel.tanzahost.com'],
             ['key' => 'smtp_port', 'value' => '465'],
-            ['key' => 'smtp_username', 'value' => 'hire@almirfrances.com'],
-            ['key' => 'smtp_password', 'value' => 'tanzahostA1@'],
+            ['key' => 'smtp_username', 'value' => 'support@almirfrances.com'],
+            ['key' => 'smtp_password', 'value' => 'tanzahostA1'],
             ['key' => 'smtp_encryption', 'value' => 'tls'],
-            ['key' => 'smtp_from_email', 'value' => 'hire@almirfrances.com'],
+            ['key' => 'smtp_from_email', 'value' => 'support@almirfrances.com'],
             ['key' => 'smtp_from_name', 'value' => 'Your Company Name'],
         ];
 
