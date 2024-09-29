@@ -1,5 +1,4 @@
-markdown
-Copy code
+
 # TanzaAdmin - Laravel 11 Admin Starter Kit
 
 TanzaAdmin is a starter kit built with **Laravel 11** that provides a comprehensive admin panel for managing users, vendors, and various web settings. This project enables users and vendors to register, log in, manage their profiles, and access their respective dashboards. In the admin panel, administrators have full control to manage everything, including web settings like the logo, favicon, and email configurations.
