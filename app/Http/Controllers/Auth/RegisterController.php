@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use \Log;
 use App\Http\Controllers\Controller;
-use App\Models\University;
 use App\Models\User;
 use App\Models\Vendor;
 use App\Traits\SendsVerificationCode;
