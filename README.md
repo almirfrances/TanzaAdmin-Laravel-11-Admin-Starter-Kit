@@ -29,8 +29,8 @@ Follow these steps to set up the project on your local machine.
 
 ### 1. Clone the Repository
 
-git clone https://github.com/your-username/TanzaAdmin.git
-cd TanzaAdmin
+git clone https://github.com/almirfrances/TanzaAdmin-Laravel-11-Admin-Starter-Kit.git
+cd TanzaAdmin-Laravel-11-Admin-Starter-Kit
 2. Install Dependencies
 Make sure you have Composer installed, then run:
 
