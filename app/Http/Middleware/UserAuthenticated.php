@@ -27,8 +27,6 @@ class UserAuthenticated
                 return redirect()->route('admin.login');
             } elseif ($guard === 'vendor') {
                 return redirect()->route('vendor.login');
-            } elseif ($guard === 'university') {
-                return redirect()->route('university.login');
             } else {
                 return redirect()->route('user.login');
             }
@@ -47,9 +45,7 @@ class UserAuthenticated
                 return redirect()->route('admin.login')->with('message', 'You were logged out due to a different user type login attempt.');
             } elseif ($guard === 'vendor') {
                 return redirect()->route('vendor.login')->with('message', 'You were logged out due to a different user type login attempt.');
-            } elseif ($guard === 'university') {
-                return redirect()->route('university.login')->with('message', 'You were logged out due to a different user type login attempt.');
-            } else {
+            }else {
                 return redirect()->route('user.login')->with('message', 'You were logged out due to a different user type login attempt.');
             }
         }

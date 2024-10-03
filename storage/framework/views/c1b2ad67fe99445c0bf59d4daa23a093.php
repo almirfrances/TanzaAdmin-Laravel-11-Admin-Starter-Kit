@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ config('app.name') }}</title>
+    <title><?php echo e(config('app.name')); ?></title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -920,34 +920,34 @@
                     </div>
 
                     <nav class="-mx-3 flex flex-1 justify-end">
-                        @isVendor
-                        <a href="{{ url('vendor/dashboard') }}"
+                        <?php if (\Illuminate\Support\Facades\Blade::check('isVendor')): ?>
+                        <a href="<?php echo e(url('vendor/dashboard')); ?>"
                             class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
                             Vendor Dashboard
                         </a>
-                        @endisVendor
+                        <?php endif; ?>
 
-                        @isUser
-                        <a href="{{ url('user/dashboard') }}"
+                        <?php if (\Illuminate\Support\Facades\Blade::check('isUser')): ?>
+                        <a href="<?php echo e(url('user/dashboard')); ?>"
                             class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
                             User Dashboard
                         </a>
-                        @endisUser
+                        <?php endif; ?>
 
                     
-                        @isGuest
-                        <a href="{{ route('user.login') }}"
+                        <?php if (\Illuminate\Support\Facades\Blade::check('isGuest')): ?>
+                        <a href="<?php echo e(route('user.login')); ?>"
                             class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
                             Log in
                         </a>
 
-                        @if (Route::has('user.register'))
-                        <a href="{{ route('user.register') }}"
+                        <?php if(Route::has('user.register')): ?>
+                        <a href="<?php echo e(route('user.register')); ?>"
                             class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
                             Register
                         </a>
-                        @endif
-                        @endisGuest
+                        <?php endif; ?>
+                        <?php endif; ?>
                     </nav>
 
                 </header>
@@ -1116,7 +1116,7 @@
                 </main>
 
                 <footer class="py-16 text-center text-sm text-black dark:text-white/70">
-                    Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+                    Laravel v<?php echo e(Illuminate\Foundation\Application::VERSION); ?> (PHP v<?php echo e(PHP_VERSION); ?>)
                 </footer>
             </div>
         </div>
@@ -1124,3 +1124,4 @@
 </body>
 
 </html>
+<?php /**PATH C:\Users\TUFF\Documents\Laravel\TanzaAdmin-Laravel-11-Admin-Starter-Kit\resources\views/welcome.blade.php ENDPATH**/ ?>

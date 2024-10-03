@@ -17,7 +17,6 @@ use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Auth\VerifyEmailController;
-use App\Http\Controllers\Admin\UniversitiesController;
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\User\ProfileSettingsController;
 use App\Http\Controllers\Auth\LoginController as AuthLogin;
@@ -87,13 +86,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::resource('users', UsersController::class);
         Route::resource('vendors', VendorsController::class);
-        Route::resource('universities', UniversitiesController::class);
-
-
-
-
-
-
     });
 });
 
@@ -133,8 +125,6 @@ Route::post('resend-code', [VerifyEmailController::class, 'resendCode'])->name('
             // Email verified middleware applied after authentication
             Route::middleware(EnsureEmailIsVerified::class.':web')->group(function () {
                     Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
-                    Route::post('/university/select', [UserDashboardController::class, 'selectUniversity'])->name('select.university');
-
 
                     Route::get('settings/account', [ProfileSettingsController::class, 'account'])->name('settings.account');
                     Route::post('settings/account', [ProfileSettingsController::class, 'updateAccount'])->name('settings.updateAccount');
@@ -145,16 +135,6 @@ Route::post('resend-code', [VerifyEmailController::class, 'resendCode'])->name('
             });
         });
     });
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -176,43 +156,6 @@ Route::post('resend-code', [VerifyEmailController::class, 'resendCode'])->name('
             });
         });
     });
-
-
-
-
-
-
-
-
-
-
-
-
-    Route::prefix('university')->name('university.')->group(function () {
-        // User authentication middleware
-        Route::middleware(UserAuthenticated::class.':university')->group(function () {
-
-            // Email verified middleware applied after authentication
-            Route::middleware(EnsureEmailIsVerified::class.':university')->group(function () {
-                Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
-
-                Route::get('settings/account', [ProfileSettingsController::class, 'account'])->name('settings.account');
-                Route::post('settings/account', [ProfileSettingsController::class, 'updateAccount'])->name('settings.updateAccount');
-                Route::post('settings/deactivate', [ProfileSettingsController::class, 'deactivateAccount'])->name('settings.deactivateAccount');
-
-                Route::get('settings/security', [ProfileSettingsController::class, 'security'])->name('settings.security');
-                Route::post('settings/security/password', [ProfileSettingsController::class, 'updatePassword'])->name('settings.updatePassword');
-            });
-        });
-    });
-
-
-
-
-
-
-
-
 
 
 

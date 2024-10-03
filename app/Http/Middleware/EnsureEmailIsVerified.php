@@ -10,7 +10,7 @@ class EnsureEmailIsVerified
 {
     public function handle(Request $request, Closure $next, $guard = null)
     {
-        $guards = ['web', 'vendor', 'university'];
+        $guards = ['web', 'vendor'];
 
         foreach ($guards as $guard) {
             $user = Auth::guard($guard)->user();

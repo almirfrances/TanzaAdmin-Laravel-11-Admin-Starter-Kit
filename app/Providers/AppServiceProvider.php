@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
 
         Blade::if('isGuest', function () {
-            return !Auth::guard('admin')->check() && !Auth::guard('web')->check() && !Auth::guard('vendor')->check() && !Auth::guard('university')->check();
+            return !Auth::guard('admin')->check() && !Auth::guard('web')->check() && !Auth::guard('vendor')->check();
         });
 
          Blade::if('isAdmin', function () {

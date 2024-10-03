@@ -1,23 +1,19 @@
 <nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar">
     <div class="container-xxl">
         <div class="navbar-brand app-brand demo d-none d-xl-flex py-0 me-4">
-            @isUser
-                <a href="{{ route('user.dashboard') }}" class="app-brand-link gap-2">
-                    {{-- <span class="app-brand-logo demo">
-                  <img src="{{ asset('storage/' . ($settings['logo_dark'] )) }}" alt="Dark Logo" class="img-fluid mb-3">
-            </span> --}}
-                    <span class="app-brand-text demo menu-text fw-bold">{{ $settings['site_name'] }}</span>
+            <?php if (\Illuminate\Support\Facades\Blade::check('isUser')): ?>
+                <a href="<?php echo e(route('user.dashboard')); ?>" class="app-brand-link gap-2">
+                    
+                    <span class="app-brand-text demo menu-text fw-bold"><?php echo e($settings['site_name']); ?></span>
                 </a>
-            @endisUser
+            <?php endif; ?>
 
-            @isVendor
-                <a href="{{ route('vendor.dashboard') }}" class="app-brand-link gap-2">
-                    {{-- <span class="app-brand-logo demo">
-                  <img src="{{ asset('storage/' . ($settings['logo_dark'] )) }}" alt="Dark Logo" class="img-fluid mb-3">
-            </span> --}}
-                    <span class="app-brand-text demo menu-text fw-bold">{{ $settings['site_name'] }}</span>
+            <?php if (\Illuminate\Support\Facades\Blade::check('isVendor')): ?>
+                <a href="<?php echo e(route('vendor.dashboard')); ?>" class="app-brand-link gap-2">
+                    
+                    <span class="app-brand-text demo menu-text fw-bold"><?php echo e($settings['site_name']); ?></span>
                 </a>
-            @endisVendor
+            <?php endif; ?>
 
            
 
@@ -349,7 +345,7 @@
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                         data-bs-toggle="dropdown">
-                        @php
+                        <?php
                             $user = null;
 
                             if (auth()->guard('vendor')->check()) {
@@ -357,10 +353,11 @@
                             } else {
                                 $user = auth()->guard('web')->user();
                             }
-                        @endphp
+                        ?>
 
                         <div class="avatar avatar-online user-initials">
-                            {{ strtoupper($user->username[0]) }}
+                            <?php echo e(strtoupper($user->username[0])); ?>
+
                         </div>
 
 
@@ -372,20 +369,21 @@
                                 <div class="d-flex">
                                     <div class="flex-shrink-0 me-3">
                                         <div class="avatar avatar-online user-initials">
-                                            {{ strtoupper($user->username[0]) }}
+                                            <?php echo e(strtoupper($user->username[0])); ?>
+
                                         </div>
                                     </div>
                                     <div class="flex-grow-1">
-                                        @isUser
-                                            <span class="fw-medium d-block">{{ $user->full_name }}</span>
-                                        @endisUser
+                                        <?php if (\Illuminate\Support\Facades\Blade::check('isUser')): ?>
+                                            <span class="fw-medium d-block"><?php echo e($user->full_name); ?></span>
+                                        <?php endif; ?>
 
-                                        @isVendor
-                                            <span class="fw-medium d-block">{{ $user->vendor_name }}</span>
-                                        @endisVendor
+                                        <?php if (\Illuminate\Support\Facades\Blade::check('isVendor')): ?>
+                                            <span class="fw-medium d-block"><?php echo e($user->vendor_name); ?></span>
+                                        <?php endif; ?>
 
                                        
-                                        <small class="text-muted">{{ $user->username }}</small>
+                                        <small class="text-muted"><?php echo e($user->username); ?></small>
                                     </div>
                                 </div>
                             </a>
@@ -399,23 +397,23 @@
                                 <span class="align-middle">My Profile</span>
                             </a>
                         </li>
-                        @isUser
+                        <?php if (\Illuminate\Support\Facades\Blade::check('isUser')): ?>
                             <li>
-                                <a class="dropdown-item" href="{{ route('user.settings.account') }}">
+                                <a class="dropdown-item" href="<?php echo e(route('user.settings.account')); ?>">
                                     <i class="ti ti-settings me-2 ti-sm"></i>
                                     <span class="align-middle">Settings</span>
                                 </a>
                             </li>
-                        @endisUser
+                        <?php endif; ?>
 
-                        @isVendor
+                        <?php if (\Illuminate\Support\Facades\Blade::check('isVendor')): ?>
                             <li>
-                                <a class="dropdown-item" href="{{ route('vendor.settings.account') }}">
+                                <a class="dropdown-item" href="<?php echo e(route('vendor.settings.account')); ?>">
                                     <i class="ti ti-settings me-2 ti-sm"></i>
                                     <span class="align-middle">Settings</span>
                                 </a>
                             </li>
-                        @endisVendor
+                        <?php endif; ?>
 
                         
                         <li>
@@ -442,14 +440,14 @@
                             <div class="dropdown-divider"></div>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="{{ route('user.logout') }}"
+                            <a class="dropdown-item" href="<?php echo e(route('user.logout')); ?>"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="ti ti-logout me-2 ti-sm"></i>
                                 <span class="align-middle">Log Out</span>
                             </a>
-                            <form id="logout-form" action="{{ route('user.logout') }}" method="POST"
+                            <form id="logout-form" action="<?php echo e(route('user.logout')); ?>" method="POST"
                                 class="d-none">
-                                @csrf
+                                <?php echo csrf_field(); ?>
                             </form>
                         </li>
 
@@ -483,3 +481,4 @@
         object-fit: cover;
     }
 </style>
+<?php /**PATH C:\Users\TUFF\Documents\Laravel\TanzaAdmin-Laravel-11-Admin-Starter-Kit\resources\views/user/partials/menu.blade.php ENDPATH**/ ?>
